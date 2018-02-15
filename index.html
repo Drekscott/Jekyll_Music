@@ -42,7 +42,10 @@ layout: compress
         <!-- cards -->
         <div class="wrapper">
             {% for mixtape in site.data.mixtapes %}
+            {% assign tracks = mixtape.tracks | jsonify %}
+
             <div class="card" data-id="{{ mixtape.album_name }}">
+              <div></div>
                 <div class="card__container card__container--closed">
                     <svg class="card__image" xmlns="http://www.w3.org/2000/svg"
                          xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1920 1200"
@@ -52,7 +55,7 @@ layout: compress
                                 <polygon class="clip" points="0,1200 0,0 1920,0 1920,1200"></polygon>
                             </clipPath>
                         </defs>
-                        <image clip-path="url(#{{ mixtape.album_name }}-clip-path)" width="1920" height="1200"
+                        <image  onclick='initializeAmplitude("{{ tracks | markdownify }}")'clip-path="url(#{{ mixtape.album_name }}-clip-path)" width="1920" height="1200"
                                xlink:href="{{ mixtape.album_picture }}"></image>
                     </svg>
                     <div class="card__content">
@@ -128,20 +131,20 @@ layout: compress
 
 						<div class="song amplitude-song-container amplitude-play-pause" amplitude-song-index={{forloop.index0}}>
 							<div class="song-now-playing-icon-container">
-								<!-- <div class="amplitude-play">
+								<div class="amplitude-play">
 
-								</div> -->
+								</div>
 						<!-- <img class="now-playing" src="{{mixtape.album_picture}}"/> -->
 							</div>
 							<div class="song-meta-data">
-                <div class="meta">
+                <!-- <div class="meta"> -->
                     <img class="meta__avatar" src="{{ mixtape.album_picture }}"/>
                     <!-- <span class="meta__author">{{ post.author }}</span> -->
                     <!-- <span class="meta__date">{{ post.date | date: "%Y-%m-%d" }}</span> -->
-                </div>
-								<span class="song-title">{{track.track_name}}</span>
+                <!-- </div> -->
+								<span class="song-title">{{track.name}}</span>
 								<span class="song-artist">{{mixtape.artist}}</span>
-                <span style="display:none;"class="song-url">{{track.url}}</span>
+                <!-- <span style="display:none;"class="song-url">{{track.url}}</span> -->
 							</div>
 							<!-- <span class="song-duration">3:30</span> -->
 						</div>
@@ -176,92 +179,18 @@ layout: compress
 <script src="js/card-modern-blog.js"></script>
 <script src="js/modern-blog.js"></script>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/amplitudejs@3.2.3/dist/amplitude.js"></script>
-<script type="text/javascript">
-		Amplitude.init({
-      "songs": [
-          {
-              "url": "https://drive.google.com/uc?export=download&id=0B5tVHOLpqIuLbE9GM3BLRUc4YW8",
-              "name": "CallN\n",
-              "artist": "",
-              "album": "",
-              "cover_art_url":"https://www.drive.google.com/uc?export=download&id=0B5tVHOLpqIuLZ2FkYzZRa091bHM",
-              "id": 89
-          },
-          {
-              "url": "https://drive.google.com/uc?export=download&id=0B5tVHOLpqIuLaUNxODVBdmFnSDg",
-              "name": "Germs\n",
-              "artist": "",
-              "album": "",
-              "cover_art_url":"https://www.drive.google.com/uc?export=download&id=0B5tVHOLpqIuLZ2FkYzZRa091bHM",
-              "id": 90
-          },
-          {
-              "url": "https://drive.google.com/uc?export=download&id=0B5tVHOLpqIuLc2pHSGtjN0hGMkE",
-              "name": "Hot\n",
-              "artist": "",
-              "album": "",
-              "cover_art_url":"https://www.drive.google.com/uc?export=download&id=0B5tVHOLpqIuLZ2FkYzZRa091bHM",
-              "id": 91
-          },
-          {
-              "url": "https://drive.google.com/uc?export=download&id=0B5tVHOLpqIuLdjNWWkdLT2ZLSUU",
-              "name": "How You Like Me Now\n",
-              "artist": "",
-              "album": "",
-              "cover_art_url":"https://www.drive.google.com/uc?export=download&id=0B5tVHOLpqIuLZ2FkYzZRa091bHM",
-              "id": 92
-          },
-          {
-              "url": "https://drive.google.com/uc?export=download&id=0B5tVHOLpqIuLRmZ2YTVSR1gyVWc",
-              "name": "Milk Me\n",
-              "artist": "",
-              "album": "",
-              "cover_art_url":"https://www.drive.google.com/uc?export=download&id=0B5tVHOLpqIuLZ2FkYzZRa091bHM",
-              "id": 93
-          },
-          {
-              "url": "https://drive.google.com/uc?export=download&id=0B5tVHOLpqIuLZWxsbkRoeE54N2M",
-              "name": "Never Had A Job\n",
-              "artist": "",
-              "album": "",
-              "cover_art_url":"https://www.drive.google.com/uc?export=download&id=0B5tVHOLpqIuLZ2FkYzZRa091bHM",
-              "id": 94
-          },
-          {
-              "url": "https://drive.google.com/uc?export=download&id=0B5tVHOLpqIuLVHJRQzJVU2JTOTQ",
-              "name": "No ID\n",
-              "artist": "",
-              "album": "",
-              "cover_art_url":"https://www.drive.google.com/uc?export=download&id=0B5tVHOLpqIuLZ2FkYzZRa091bHM",
-              "id": 95
-          },
-          {
-              "url": "https://drive.google.com/uc?export=download&id=0B5tVHOLpqIuLaFR2STM4SUl3MzQ",
-              "name": "Too Fast\n",
-              "artist": "",
-              "album": "",
-              "cover_art_url":"https://www.drive.google.com/uc?export=download&id=0B5tVHOLpqIuLZ2FkYzZRa091bHM",
-              "id": 96
-          },
-          {
-              "url": "https://drive.google.com/uc?export=download&id=0B5tVHOLpqIuLTjJrck5sODhFZnc",
-              "name": "Musty\n",
-              "artist": "",
-              "album": "",
-              "cover_art_url":"https://www.drive.google.com/uc?export=download&id=0B5tVHOLpqIuLZ2FkYzZRa091bHM",
-              "id": 97
-          },
-          {
-              "url": "https://drive.google.com/uc?export=download&id=0B5tVHOLpqIuLeXRYMGlseEJFQmM",
-              "name": "Hardly\n",
-              "artist": "",
-              "album": "",
-              "cover_art_url":"https://www.drive.google.com/uc?export=download&id=0B5tVHOLpqIuLZ2FkYzZRa091bHM",
-              "id": 98
-          }
-      ],
-        "default_album_art": "https://www.drive.google.com/uc?export=download&id=0B5tVHOLpqIuLZ2FkYzZRa091bHM"
-		});
-	</script>
+<script>
+function initializeAmplitude(tracks){
+var songs = [];
+tracks = tracks.replace(/(<p[^>]+?>|<p>|<\/p>)/img, "");
+songs = tracks.replace(/[“”‘’]/g,'"');
+
+Amplitude.init({
+"songs" : JSON.parse(songs)
+});
+
+
+};
+</script>
 </body>
 </html>

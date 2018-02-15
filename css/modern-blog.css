@@ -366,6 +366,7 @@ div#amplitude-player{
 	box-shadow: 0 2px 12px 8px rgba(0,0,0,0.10);
 	margin-bottom: 20px;
 	margin-top: 40px;
+	max-width: 300px;
 }
 
 /* Player Left Styles */

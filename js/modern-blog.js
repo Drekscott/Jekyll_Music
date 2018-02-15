@@ -310,7 +310,9 @@ var demo = (function (window) {
             _triggerOpenCard(oldHash, newHash);
         });
     };
-
+    function initializeAmplitude(tracks){
+      console.log("HI");
+    };
     // Expose methods.
     return {
         init: init
