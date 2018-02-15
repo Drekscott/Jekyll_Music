@@ -62,11 +62,11 @@ layout: compress
                             <p class="card__subtitle">{{ mixtape.artist }}</p>
                         </div>
                         <div class="card__copy">
-                            <div class="meta">
-                                <img class="meta__avatar" src="{{ mixtape.album_picture }}"/>
+                            <!-- <div class="meta"> -->
+                                <!-- <img class="meta__avatar" src="{{ mixtape.album_picture }}"/> -->
                                 <!-- <span class="meta__author">{{ post.author }}</span> -->
                                 <!-- <span class="meta__date">{{ post.date | date: "%Y-%m-%d" }}</span> -->
-                            </div>
+                            <!-- </div> -->
 
 <!-- {% for track in mixtape.tracks %}
 
@@ -79,10 +79,11 @@ layout: compress
   </audio>
 </div>
   {% endfor %} -->
+
   <div class="large-8 medium-10 small-11 large-centered medium-centered small-centered columns" id="amplitude-player">
 				<div class="row">
 					<div class="large-6 medium-6 small-12 columns" id="amplitude-left">
-						<img src="{{mixtape.album_picture}}"/>
+            <!-- <img amplitude-song-info="cover_art_url" amplitude-main-song-info="true"/> -->
 						<div id="player-left-bottom">
 							<div id="time-container">
 								<span class="current-time">
@@ -133,13 +134,16 @@ layout: compress
 						<!-- <img class="now-playing" src="{{mixtape.album_picture}}"/> -->
 							</div>
 							<div class="song-meta-data">
+                <div class="meta">
+                    <img class="meta__avatar" src="{{ mixtape.album_picture }}"/>
+                    <!-- <span class="meta__author">{{ post.author }}</span> -->
+                    <!-- <span class="meta__date">{{ post.date | date: "%Y-%m-%d" }}</span> -->
+                </div>
 								<span class="song-title">{{track.track_name}}</span>
 								<span class="song-artist">{{mixtape.artist}}</span>
                 <span style="display:none;"class="song-url">{{track.url}}</span>
 							</div>
-							<a href="{{track.url}}" class="bandcamp-link" target="_blank">
-							</a>
-							<span class="song-duration">3:30</span>
+							<!-- <span class="song-duration">3:30</span> -->
 						</div>
             {% endfor %}
 					</div>
@@ -180,7 +184,7 @@ layout: compress
               "name": "CallN\n",
               "artist": "",
               "album": "",
-              "cover_art_url":"",
+              "cover_art_url":"https://www.drive.google.com/uc?export=download&id=0B5tVHOLpqIuLZ2FkYzZRa091bHM",
               "id": 89
           },
           {
@@ -188,7 +192,7 @@ layout: compress
               "name": "Germs\n",
               "artist": "",
               "album": "",
-              "cover_art_url":"",
+              "cover_art_url":"https://www.drive.google.com/uc?export=download&id=0B5tVHOLpqIuLZ2FkYzZRa091bHM",
               "id": 90
           },
           {
@@ -196,7 +200,7 @@ layout: compress
               "name": "Hot\n",
               "artist": "",
               "album": "",
-              "cover_art_url":"",
+              "cover_art_url":"https://www.drive.google.com/uc?export=download&id=0B5tVHOLpqIuLZ2FkYzZRa091bHM",
               "id": 91
           },
           {
@@ -204,7 +208,7 @@ layout: compress
               "name": "How You Like Me Now\n",
               "artist": "",
               "album": "",
-              "cover_art_url":"",
+              "cover_art_url":"https://www.drive.google.com/uc?export=download&id=0B5tVHOLpqIuLZ2FkYzZRa091bHM",
               "id": 92
           },
           {
@@ -212,7 +216,7 @@ layout: compress
               "name": "Milk Me\n",
               "artist": "",
               "album": "",
-              "cover_art_url":"",
+              "cover_art_url":"https://www.drive.google.com/uc?export=download&id=0B5tVHOLpqIuLZ2FkYzZRa091bHM",
               "id": 93
           },
           {
@@ -220,7 +224,7 @@ layout: compress
               "name": "Never Had A Job\n",
               "artist": "",
               "album": "",
-              "cover_art_url":"",
+              "cover_art_url":"https://www.drive.google.com/uc?export=download&id=0B5tVHOLpqIuLZ2FkYzZRa091bHM",
               "id": 94
           },
           {
@@ -228,7 +232,7 @@ layout: compress
               "name": "No ID\n",
               "artist": "",
               "album": "",
-              "cover_art_url":"",
+              "cover_art_url":"https://www.drive.google.com/uc?export=download&id=0B5tVHOLpqIuLZ2FkYzZRa091bHM",
               "id": 95
           },
           {
@@ -236,7 +240,7 @@ layout: compress
               "name": "Too Fast\n",
               "artist": "",
               "album": "",
-              "cover_art_url":"",
+              "cover_art_url":"https://www.drive.google.com/uc?export=download&id=0B5tVHOLpqIuLZ2FkYzZRa091bHM",
               "id": 96
           },
           {
@@ -244,7 +248,7 @@ layout: compress
               "name": "Musty\n",
               "artist": "",
               "album": "",
-              "cover_art_url":"",
+              "cover_art_url":"https://www.drive.google.com/uc?export=download&id=0B5tVHOLpqIuLZ2FkYzZRa091bHM",
               "id": 97
           },
           {
@@ -252,10 +256,11 @@ layout: compress
               "name": "Hardly\n",
               "artist": "",
               "album": "",
-              "cover_art_url":"",
+              "cover_art_url":"https://www.drive.google.com/uc?export=download&id=0B5tVHOLpqIuLZ2FkYzZRa091bHM",
               "id": 98
           }
-      ]
+      ],
+        "default_album_art": "https://www.drive.google.com/uc?export=download&id=0B5tVHOLpqIuLZ2FkYzZRa091bHM"
 		});
 	</script>
 </body>

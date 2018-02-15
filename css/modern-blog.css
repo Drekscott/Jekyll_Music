@@ -651,6 +651,15 @@ div#amplitude-right{
 	padding: 0px;
 	overflow-y: scroll;
 }
+div.song:hover {
+	background-color: #00A0FF;
+
+
+}
+div.song:hover span{
+	color:white !important;
+}
+
 
 div#amplitude-right	div.song{
 	cursor: pointer;
