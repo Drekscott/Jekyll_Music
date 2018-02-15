@@ -28,46 +28,124 @@ layout: compress
 <body class="body">
 <div class="container">
     <header class="header">
-        <h1>Modern Blog<span>A Clean, Fresh Minimal Look.</span></h1>
-        <nav class="links">
+        <h1>{{ site.title }}<span>A Clean, Fresh Minimal Look.</span></h1>
+        <!-- <nav class="links">
             <a href="#"><i class="fa fa-twitter-square fa-3x"></i></a>
             <a href="#"><i class="fa fa-instagram fa-3x"></i></a>
             <a href="#"><i class="fa fa-facebook-square fa-3x"></i></a>
             <a href="#"><i class="fa fa-tumblr-square fa-3x"></i></a>
-        </nav>
+        </nav> -->
     </header>
     <div class="content">
         <!-- trianglify pattern container -->
         <div class="pattern pattern--hidden"></div>
         <!-- cards -->
         <div class="wrapper">
-            {% for post in site.posts %}
-            <div class="card" data-id="{{ post.id }}">
+            {% for mixtape in site.data.mixtapes %}
+            <div class="card" data-id="{{ mixtape.album_name }}">
                 <div class="card__container card__container--closed">
                     <svg class="card__image" xmlns="http://www.w3.org/2000/svg"
                          xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1920 1200"
                          preserveAspectRatio="xMidYMid slice">
                         <defs>
-                            <clipPath id="{{ post.id }}-clip-path">
+                            <clipPath id="{{ mixtape.album_name }}-clip-path">
                                 <polygon class="clip" points="0,1200 0,0 1920,0 1920,1200"></polygon>
                             </clipPath>
                         </defs>
-                        <image clip-path="url(#{{ post.id }}-clip-path)" width="1920" height="1200"
-                               xlink:href="{{ post.image }}"></image>
+                        <image clip-path="url(#{{ mixtape.album_name }}-clip-path)" width="1920" height="1200"
+                               xlink:href="{{ mixtape.album_picture }}"></image>
                     </svg>
                     <div class="card__content">
                         <i class="card__btn-close fa fa-times"></i>
                         <div class="card__caption">
-                            <h2 class="card__title">{{ post.title }}</h2>
-                            <p class="card__subtitle">{{ post.subtitle }}</p>
+                            <h2 class="card__title">{{ mixtape.album_name }}</h2>
+                            <p class="card__subtitle">{{ mixtape.artist }}</p>
                         </div>
                         <div class="card__copy">
                             <div class="meta">
-                                <img class="meta__avatar" src="{{ post.avatar }}"/>
-                                <span class="meta__author">{{ post.author }}</span>
-                                <span class="meta__date">{{ post.date | date: "%Y-%m-%d" }}</span>
+                                <img class="meta__avatar" src="{{ mixtape.album_picture }}"/>
+                                <!-- <span class="meta__author">{{ post.author }}</span> -->
+                                <!-- <span class="meta__date">{{ post.date | date: "%Y-%m-%d" }}</span> -->
                             </div>
-                            {{ post.content }}
+
+<!-- {% for track in mixtape.tracks %}
+
+<div>
+  {{track.track_name}}
+  <audio title="{{track.track_name}}" preload="none" controls id="{{track.track_name}}" style="padding-bottom:1%;" >
+  <source  src="{{track.track}}" type="audio/mp3"/>
+
+  Your browser does not support the audio tag.
+  </audio>
+</div>
+  {% endfor %} -->
+  <div class="large-8 medium-10 small-11 large-centered medium-centered small-centered columns" id="amplitude-player">
+				<div class="row">
+					<div class="large-6 medium-6 small-12 columns" id="amplitude-left">
+						<img src="{{mixtape.album_picture}}"/>
+						<div id="player-left-bottom">
+							<div id="time-container">
+								<span class="current-time">
+									<span class="amplitude-current-minutes" amplitude-main-current-minutes="true"></span>:<span class="amplitude-current-seconds" amplitude-main-current-seconds="true"></span>
+								</span>
+								<input type="range" class="amplitude-song-slider" amplitude-main-song-slider="true" step=".1"/>
+								<span class="duration">
+									<span class="amplitude-duration-minutes" amplitude-main-duration-minutes="true"></span>:<span class="amplitude-duration-seconds" amplitude-main-duration-seconds="true"></span>
+								</span>
+							</div>
+
+							<div id="control-container">
+								<div id="repeat-container">
+									<div class="amplitude-repeat" id="repeat"></div>
+								</div>
+
+								<div id="central-control-container">
+									<div id="central-controls">
+										<div class="amplitude-prev" id="previous"></div>
+										<div class="amplitude-play-pause" amplitude-main-play-pause="true" id="play-pause"></div>
+										<div class="amplitude-next" id="next"></div>
+									</div>
+								</div>
+
+								<div id="shuffle-container">
+									<div class="amplitude-shuffle amplitude-shuffle-off" id="shuffle"></div>
+								</div>
+							</div>
+
+							<div id="meta-container">
+								<span amplitude-song-info="name" amplitude-main-song-info="true" class="song-name"></span>
+
+								<div class="song-artist-album">
+									<span amplitude-song-info="artist" amplitude-main-song-info="true"></span>
+									<span amplitude-song-info="album" amplitude-main-song-info="true"></span>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="large-6 medium-6 small-12 columns" id="amplitude-right">
+            {% for track in mixtape.tracks %}
+
+						<div class="song amplitude-song-container amplitude-play-pause" amplitude-song-index="{{track.id}}">
+							<div class="song-now-playing-icon-container">
+								<div class="amplitude-play">
+
+								</div>
+						<!-- <img class="now-playing" src="{{mixtape.album_picture}}"/> -->
+							</div>
+							<div class="song-meta-data">
+								<span class="song-title">{{track.track_name}}</span>
+								<span class="song-artist">{{mixtape.artist}}</span>
+                <span style="display:none;"class="song-url">{{track.url}}</span>
+							</div>
+							<a href="{{track.url}}" class="bandcamp-link" target="_blank">
+							</a>
+							<span class="song-duration">3:30</span>
+						</div>
+            {% endfor %}
+					</div>
+				</div>
+			</div>
+
                         </div>
                     </div>
                 </div>
@@ -75,6 +153,14 @@ layout: compress
             {% endfor %}
             <!-- /cards -->
         </div>
+        <header class="header">
+            <nav class="links">
+                <a href="#"><i class="fa fa-twitter-square fa-3x"></i></a>
+                <a href="#"><i class="fa fa-instagram fa-3x"></i></a>
+                <a href="#"><i class="fa fa-facebook-square fa-3x"></i></a>
+                <a href="#"><i class="fa fa-tumblr-square fa-3x"></i></a>
+            </nav>
+        </header>
     </div>
     <!-- /container -->
 </div>
@@ -85,5 +171,92 @@ layout: compress
 <script src="js/vendors/cash.min.js"></script>
 <script src="js/card-modern-blog.js"></script>
 <script src="js/modern-blog.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/amplitudejs@3.2.3/dist/amplitude.js"></script>
+<script type="text/javascript">
+		Amplitude.init({
+      "songs": [
+          {
+              "url": "https://drive.google.com/uc?export=download&id=0B5tVHOLpqIuLbE9GM3BLRUc4YW8",
+              "name": "CallN\n",
+              "artist": "",
+              "album": "",
+              "cover_art_url":"",
+              "id": 89
+          },
+          {
+              "url": "https://drive.google.com/uc?export=download&id=0B5tVHOLpqIuLaUNxODVBdmFnSDg",
+              "name": "Germs\n",
+              "artist": "",
+              "album": "",
+              "cover_art_url":"",
+              "id": 90
+          },
+          {
+              "url": "https://drive.google.com/uc?export=download&id=0B5tVHOLpqIuLc2pHSGtjN0hGMkE",
+              "name": "Hot\n",
+              "artist": "",
+              "album": "",
+              "cover_art_url":"",
+              "id": 91
+          },
+          {
+              "url": "https://drive.google.com/uc?export=download&id=0B5tVHOLpqIuLdjNWWkdLT2ZLSUU",
+              "name": "How You Like Me Now\n",
+              "artist": "",
+              "album": "",
+              "cover_art_url":"",
+              "id": 92
+          },
+          {
+              "url": "https://drive.google.com/uc?export=download&id=0B5tVHOLpqIuLRmZ2YTVSR1gyVWc",
+              "name": "Milk Me\n",
+              "artist": "",
+              "album": "",
+              "cover_art_url":"",
+              "id": 93
+          },
+          {
+              "url": "https://drive.google.com/uc?export=download&id=0B5tVHOLpqIuLZWxsbkRoeE54N2M",
+              "name": "Never Had A Job\n",
+              "artist": "",
+              "album": "",
+              "cover_art_url":"",
+              "id": 94
+          },
+          {
+              "url": "https://drive.google.com/uc?export=download&id=0B5tVHOLpqIuLVHJRQzJVU2JTOTQ",
+              "name": "No ID\n",
+              "artist": "",
+              "album": "",
+              "cover_art_url":"",
+              "id": 95
+          },
+          {
+              "url": "https://drive.google.com/uc?export=download&id=0B5tVHOLpqIuLaFR2STM4SUl3MzQ",
+              "name": "Too Fast\n",
+              "artist": "",
+              "album": "",
+              "cover_art_url":"",
+              "id": 96
+          },
+          {
+              "url": "https://drive.google.com/uc?export=download&id=0B5tVHOLpqIuLTjJrck5sODhFZnc",
+              "name": "Musty\n",
+              "artist": "",
+              "album": "",
+              "cover_art_url":"",
+              "id": 97
+          },
+          {
+              "url": "https://drive.google.com/uc?export=download&id=0B5tVHOLpqIuLeXRYMGlseEJFQmM",
+              "name": "Hardly\n",
+              "artist": "",
+              "album": "",
+              "cover_art_url":"",
+              "id": 98
+          }
+      ]
+		});
+	</script>
 </body>
 </html>
