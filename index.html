@@ -13,6 +13,8 @@ layout: compress
     <meta name="author" content="{{ site.author }}"/>
     <link rel="shortcut icon" href="img/favicon.ico">
     <link rel="stylesheet" type="text/css" href="css/normalize.css"/>
+    <link rel="stylesheet" href="/css/carousel.css"/>
+    <link rel="stylesheet" href="/css/new.css"/>
     <link rel="stylesheet" type="text/css" href="fonts/font-awesome/css/font-awesome.css"/>
     <link rel="stylesheet" type="text/css" href="css/modern-blog.css"/>
     <!--[if IE]>
@@ -25,27 +27,90 @@ layout: compress
         }
     </script>
 </head>
+
 <body class="body">
+
+
+  <nav class="nav-bar">
+    <a href="#">  <img style="height:70.5%; width:70.5%;" src="img/nineklogo.png" alt="" /></a>
+    <a href="#">Mixtapes</a>
+    <a href="#">Works</a>
+    <a href="#">Partners</a>
+    <a href="#">Price</a>
+    <a href="#">Contacts</a>
+
+    <input type="text" id="myInput" onkeyup="searchMixtapes()" placeholder="Find Gold...">
+
+    <!-- <a href="#"><i class="fa fa-twitter-square fa-2x"></i></a>
+    <a href="#"><i class="fa fa-instagram fa-2x"></i></a>
+    <a href="#"><i class="fa fa-facebook-square fa-2x"></i></a>
+    <a href="#"><i class="fa fa-tumblr-square fa-2x"></i></a> -->
+  </nav>
+
 <div class="container">
     <header class="header">
-        <h1>{{ site.title }}<span>A Clean, Fresh Minimal Look.</span></h1>
-        <!-- <nav class="links">
-            <a href="#"><i class="fa fa-twitter-square fa-3x"></i></a>
-            <a href="#"><i class="fa fa-instagram fa-3x"></i></a>
-            <a href="#"><i class="fa fa-facebook-square fa-3x"></i></a>
-            <a href="#"><i class="fa fa-tumblr-square fa-3x"></i></a>
-        </nav> -->
+
+        <!-- <h1>{{ site.title }}<span>A Clean, Fresh Minimal Look.</span></h1> -->
     </header>
+
+
+    <!-- <a href="index.html" class="logo"> -->
+    <div>
+
+    </div>
+    <!-- </a> -->
+        <!-- <main> -->
+
+          <div id="carousel" style="margin-top:15%;">
+
+             <div class="hideLeft">
+              <img src="https://s16.postimg.org/vklrwoxtx/cover9.jpg">
+            </div>
+
+            <div class="prevLeftSecond">
+              <img src="https://drive.google.com/uc?export=download&id=0B5tVHOLpqIuLaGVfYTNmUkxrYlk">
+            </div>
+
+            <div class="prev">
+              <img src="https://drive.google.com/uc?export=download&id=0B5tVHOLpqIuLalhGdUVsbS1SZ3M">
+            </div>
+
+            <div class="selected">
+              <img src="https://www.drive.google.com/uc?export=download&id=0B5tVHOLpqIuLZ2FkYzZRa091bHM">
+            </div>
+
+            <div class="next">
+              <img src="https://www.drive.google.com/uc?export=download&id=0B5tVHOLpqIuLY2tPWS1Pa0JRcHM">
+            </div>
+
+            <div class="nextRightSecond">
+              <img src="
+      https://drive.google.com/uc?export=download&id=0B5tVHOLpqIuLRVBwX2VUN25mX3M">
+            </div>
+
+            <div class="hideRight">
+              <img src="https://drive.google.com/uc?export=download&id=0B5tVHOLpqIuLeFlISEZ0QkczcGs">
+            </div>
+
+          </div>
+
+          <div class="buttons">
+            <!-- <button id="prev">Prev</button>
+            <button id="next">Next</button> -->
+          </div>
+
+        <!-- </main> -->
     <div class="content">
         <!-- trianglify pattern container -->
         <div class="pattern pattern--hidden"></div>
         <!-- cards -->
-        <div class="wrapper">
-            {% for mixtape in site.data.mixtapes %}
+        <div class="wrapper" id="search_information">
+          <!-- {{ site.data.mixtapes | sort: 'date_created' }} -->
+          {% assign sortedMixtapes = (site.data.mixtapes | sort: 'date_created') | reverse %}
+            {% for mixtape in sortedMixtapes %}
             {% assign tracks = mixtape.tracks | jsonify %}
 
-            <div class="card" data-id="{{ mixtape.album_name }}">
-              <div></div>
+            <div class="card" data-id="{{ mixtape.album_name }}" id="cardDisplay">
                 <div class="card__container card__container--closed">
                     <svg class="card__image" xmlns="http://www.w3.org/2000/svg"
                          xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1920 1200"
@@ -61,15 +126,18 @@ layout: compress
                     <div class="card__content">
                         <i class="card__btn-close fa fa-times"></i>
                         <div class="card__caption">
+                          <ul>
                             <h2 class="card__title">{{ mixtape.album_name }}</h2>
                             <p class="card__subtitle">{{ mixtape.artist }}</p>
+                            <p class="card__subtitle">{{ mixtape.date_created | date: "%m-%d-%Y" }}</p>
+                          </ul>
                         </div>
                         <div class="card__copy">
-                            <!-- <div class="meta"> -->
-                                <!-- <img class="meta__avatar" src="{{ mixtape.album_picture }}"/> -->
-                                <!-- <span class="meta__author">{{ post.author }}</span> -->
-                                <!-- <span class="meta__date">{{ post.date | date: "%Y-%m-%d" }}</span> -->
-                            <!-- </div> -->
+                            <!-- <div class="meta">
+                                <img class="meta__avatar" src="{{ mixtape.album_picture }}"/>
+                                <span class="meta__author">{{ post.author }}</span>
+                                <span class="meta__date">{{ mixtape.date_created | date: "%Y-%m-%d" }}</span>
+                            </div> -->
 
 <!-- {% for track in mixtape.tracks %}
 
@@ -161,12 +229,12 @@ layout: compress
             <!-- /cards -->
         </div>
         <header class="header">
-            <nav class="links">
+            <!-- <nav class="links">
                 <a href="#"><i class="fa fa-twitter-square fa-3x"></i></a>
                 <a href="#"><i class="fa fa-instagram fa-3x"></i></a>
                 <a href="#"><i class="fa fa-facebook-square fa-3x"></i></a>
                 <a href="#"><i class="fa fa-tumblr-square fa-3x"></i></a>
-            </nav>
+            </nav> -->
         </header>
     </div>
     <!-- /container -->
@@ -178,6 +246,7 @@ layout: compress
 <script src="js/vendors/cash.min.js"></script>
 <script src="js/card-modern-blog.js"></script>
 <script src="js/modern-blog.js"></script>
+<script src="js/search.js"></script>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/amplitudejs@3.2.3/dist/amplitude.js"></script>
 <script>
 function initializeAmplitude(tracks){
