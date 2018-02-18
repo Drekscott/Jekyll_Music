@@ -369,7 +369,8 @@ div#amplitude-player{
 	box-shadow: 0 2px 12px 8px rgba(0,0,0,0.10);
 	margin-bottom: 20px;
 	margin-top: 40px;
-	max-width: 300px;
+	max-width: 500px;
+	margin: 0 auto;
 }
 
 /* Player Left Styles */
@@ -667,7 +668,7 @@ div.song:hover span{
 
 div#amplitude-right	div.song{
 	cursor: pointer;
-	padding: 10px;
+	padding: 0px;
 }
 
 div#amplitude-right	div.song div.song-now-playing-icon-container{
