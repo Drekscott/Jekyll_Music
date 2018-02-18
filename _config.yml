@@ -3,5 +3,5 @@ title: NINEK
 description: New version of ninektapes mixtape application
 keywords: Music, Hip Hop, Rap, Entertainment, Mixtapes, Mixtape
 author: Dreyton Scott
-baseurl: "" # the subpath of your site, e.g. /blog/
+baseurl: "/Jekyll_Music" # the subpath of your site, e.g. /blog/
 url: "" # the base hostname & protocol for your site
